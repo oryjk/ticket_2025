@@ -4,10 +4,10 @@ export const config = {
   useMock: false,
   server: {
     dev: {
-      baseUrl: 'http://localhost:5689'
+      baseUrl: 'http://localhost:5689/ticket'
     },
     prod: {
-      baseUrl: 'http://192.168.3.109:5689'
+      baseUrl: 'http://192.168.3.109:5689/ticket'
     }
   }
 }
