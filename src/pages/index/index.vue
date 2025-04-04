@@ -13,10 +13,10 @@
 				<!-- Control Buttons -->
 				<div class="control-panel">
 					<button :disabled="isPolling" @click="startPolling" class="control-btn start">
-						<span class="icon">▶</span> 开始刷新
+						<span class="icon">▶</span> {{ refreshValue }}
 					</button>
 					<button :disabled="!isPolling" @click="stopPolling" class="control-btn stop">
-						<span class="icon">■</span> 停止刷新
+						<span class="icon">■</span> {{ stopRefreshValue }}
 					</button>
 				</div>
 				<!-- Current Time Display -->
@@ -53,6 +53,7 @@ const checkMembership = () => {
 const isMember = computed(() => userInfo.value.isMember)
 // --- End User Info ---
 
+
 // --- Match Data ---
 const homeTeam = ref('主队加载中...')
 const awayTeam = ref('客队加载中...')
@@ -63,6 +64,14 @@ const matchId = ref('')
 // --- Polling ---
 const pollingInterval = ref<number | null>(null)
 const isPolling = ref(false)
+
+const refreshValue = computed(() => {
+	return isPolling.value ? '正在运行中...' : '立即刷新'
+})
+
+const stopRefreshValue = computed(() => {
+	return isPolling.value? '停止刷新' : '刷新已停止'
+})
 
 const updateBlockInfo = async () => {
 	if (!matchId.value) return; // Don't fetch if matchId isn't set yet
