@@ -1,4 +1,4 @@
-import { config } from '../config/env'
+const baseURL = import.meta.env.VITE_API_BASE_URL || ''; // 获取环境变量
 
 interface PositionArea {
     name: string
@@ -165,8 +165,8 @@ export interface BlockInfoHistory {
 }
 
 export const fetchCurrentMatch = async (): Promise<Match> => {
-    console.log(`${config.server.dev.baseUrl}/api/schedule/current`)
-    const response = await fetch(`${config.server.dev.baseUrl}/api/schedule/current`,)
+    console.log(`${baseURL}api/schedule/current`)
+    const response = await fetch(`${baseURL}api/schedule/current`,)
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
     }
@@ -200,7 +200,7 @@ export const fetchMatchData = async (matchId?: string): Promise<MatchData> => {
     // }
 
     try {
-        const response = await fetch(`${config.server.dev.baseUrl}/api/schedule/list${matchId ? `/${matchId}` : ''}`,)
+        const response = await fetch(`${baseURL}api/schedule/list${matchId ? `/${matchId}` : ''}`,)
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`)
         }
@@ -229,8 +229,8 @@ export const fetchMatchData = async (matchId?: string): Promise<MatchData> => {
 }
 
 export const fetchBlockInfo = async (matchId: string): Promise<BlockInfoHistory[]> => {
-    console.log(`${config.server.dev.baseUrl}/api/general-ticket/blockInfo`)
-    const response = await fetch(`${config.server.dev.baseUrl}/api/general-ticket/blockInfo/${matchId}`,)
+    console.log(`${baseURL}api/general-ticket/blockInfo`)
+    const response = await fetch(`${baseURL}api/general-ticket/blockInfo/${matchId}`,)
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
     }
