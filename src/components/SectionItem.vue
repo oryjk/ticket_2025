@@ -1,7 +1,7 @@
 <template>
 	<div class="content-item">
 		<div class="section-title" :style="{ backgroundColor: section.color }">
-			<div class="title-text" :style="{ color: isDarkColor(section.color) ? '#fff' : '#000' }">{{ section.title }}
+			<div class="title-text" :style="{ color: isDarkColor(section.color) ? '#fff' : '#000' }">{{ section.title }} {{ section.tower }}
 			</div>
 			<div class="price-text" :style="{ color: isDarkColor(section.color) ? '#fff' : '#000' }">
 				票价：{{ section.price }}元</div>
